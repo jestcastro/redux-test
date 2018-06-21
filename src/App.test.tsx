@@ -16,9 +16,16 @@ beforeEach(() => {
   wrappedRoot=Enzyme.mount(<ReduxRoot><App /></ReduxRoot>);
   wrapper = wrappedRoot.find('App')
 })
-it('increments the count', () => {
+test('increments the count', () => {
   wrapper.find('#incrementBtn').simulate('click')
   wrappedRoot.update();
   // @ts-ignore
   expect(wrapper.instance().props.ctr).toBe(1)
 });
+test('[App.tsx] decrements the count', () => {
+  wrapper.find('#decrementBtn').simulate('click')
+  wrappedRoot.update();
+  // @ts-ignore
+  expect(wrapper.instance().props.ctr).toBe(-1)
+});
+
