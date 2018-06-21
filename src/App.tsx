@@ -58,7 +58,7 @@ class App extends React.Component<IProps, IState> {
   }
 }
 
-const mapStateToPros = (state: IReduxState) => {
+const mapStateToProps = (state: IReduxState) => {
   return {
     ctr: state.ctr.counter,
     storedResults: state.res.results
@@ -74,4 +74,4 @@ const mapDispatchToProps = (dispatch: (info: IReduxActions) => void) => {
     onDeleteStoredCounter: (index?: number) => dispatch({ type: Actions.DeleteStored, index })
   }
 }
-export default connect(mapStateToPros, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
