@@ -1,15 +1,5 @@
+import { CounterActions, ICounterAction } from "../actions/counter";
 
-
-export enum CounterActions {
-    Increment = 'INCREMENT',
-    Decrement = 'DECREMENT',
-    Add = 'ADD',
-    Substract = 'SUBSTRACT'
-}
-export interface ICounterAction {
-    type: CounterActions;
-    value?: number;
-}
 export interface ICounterState {
     counter: number;
 }

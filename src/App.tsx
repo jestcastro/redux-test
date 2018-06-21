@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 
 import { IReduxState, IReduxActions } from './store/definitions';
 import { Actions } from './store/actions';
+import { actions } from './store/actions/result';
 
 interface IProps {
   ctr: number,
@@ -35,10 +36,10 @@ class App extends React.Component<IProps, IState> {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">{this.props.ctr}</h1>
         </header>
-        <button onClick={this.props.onIncrementCounter}>Increment</button>
-        <button onClick={this.props.onDecrementCounter}>Decrement</button>
-        <button onClick={() => this.props.onAddCounter(10)}>Add 5</button>
-        <button onClick={() => this.props.onSubstractCounter(8)}>Substract 5</button>
+        <button id="incrementBtn" onClick={this.props.onIncrementCounter}>Increment</button>
+        <button id="decrementBtn" onClick={this.props.onDecrementCounter}>Decrement</button>
+        <button id="addBtn" onClick={() => this.props.onAddCounter(10)}>Add 5</button>
+        <button id="substractBtn" onClick={() => this.props.onSubstractCounter(8)}>Substract 5</button>
         <hr />
         <button onClick={() => this.props.onStoreCounter(this.props.ctr)}>Store Result</button>
         <ul>
@@ -66,12 +67,12 @@ const mapStateToProps = (state: IReduxState) => {
 }
 const mapDispatchToProps = (dispatch: (info: IReduxActions) => void) => {
   return {
-    onIncrementCounter: () => dispatch({ type: Actions.Increment }),
-    onDecrementCounter: () => dispatch({ type: Actions.Decrement }),
-    onAddCounter: (value?: number) => dispatch({ type: Actions.Add, value }),
-    onSubstractCounter: (value?: number) => dispatch({ type: Actions.Substract, value }),
-    onStoreCounter: (value?: number) => dispatch({ type: Actions.Store, value }),
-    onDeleteStoredCounter: (index?: number) => dispatch({ type: Actions.DeleteStored, index })
+    onIncrementCounter: () => dispatch(Actions.increment()),
+    onDecrementCounter: () => dispatch(Actions.decrement()),
+    onAddCounter: (value?: number) => dispatch(Actions.add(value)),
+    onSubstractCounter: (value?: number) => dispatch(Actions.substract(value)),
+    onStoreCounter: (value?: number) => dispatch(actions.store(value)),
+    onDeleteStoredCounter: (index?: number) => dispatch(actions.deleteStore(index))
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(App);

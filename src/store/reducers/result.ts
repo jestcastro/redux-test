@@ -1,14 +1,5 @@
+import { IResultAction, ResultActions } from "../actions/result";
 
-
-export enum ResultActions {
-    Store = "STORE",
-    DeleteStored = "DELETE_STORED"
-}
-export interface IResultAction {
-    type: ResultActions;
-    value?: number;
-    index?: number;
-}
 export interface IResultState {
     results: any[];
 }

@@ -1,9 +1,24 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import * as Enzyme from 'enzyme';
+import * as Adapter from 'enzyme-adapter-react-16'
+import ReduxRoot from './ReduxRoot';
 import App from './App';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+// Enzyme configurations needs to be at src/setupTests.ts 
+
+Enzyme.configure({ adapter: new Adapter() })
+
+
+
+let wrapper: Enzyme.ReactWrapper;
+let wrappedRoot: Enzyme.ReactWrapper;
+beforeEach(() => {
+  wrappedRoot=Enzyme.mount(<ReduxRoot><App /></ReduxRoot>);
+  wrapper = wrappedRoot.find('App')
+})
+it('increments the count', () => {
+  wrapper.find('#incrementBtn').simulate('click')
+  wrappedRoot.update();
+  // @ts-ignore
+  expect(wrapper.instance().props.ctr).toBe(1)
 });
