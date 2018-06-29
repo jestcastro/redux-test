@@ -14,6 +14,7 @@ export interface IAppProps {
   storedResults: any[];
   onIncrementCounter: () => void;
   onDecrementCounter: () => void;
+  getStore:() => void;
   onAddCounter: (value?: number) => void;
   onSubstractCounter: (value?: number) => void;
   onStoreCounter: (value?: number) => void;
@@ -29,6 +30,9 @@ export class App extends React.Component<IAppProps, IState> {
     this.state = {
       counter: 0
     }
+  }
+  public componentDidMount(){
+    this.props.getStore()
   }
   public render() {
     return (
@@ -83,7 +87,8 @@ const mapDispatchToProps = (dispatch: any) => {
     onAddCounter: Actions.add,
     onSubstractCounter:Actions.substract,
     onStoreCounter: actions.store,
-    onDeleteStoredCounter:actions.deleteStore
+    onDeleteStoredCounter:actions.deleteStore,
+    getStore:actions.getInfo
   }, dispatch);
 }
 // @ts-ignore

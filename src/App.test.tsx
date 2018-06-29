@@ -27,6 +27,7 @@ describe('[App.tsx]', () => {
       onIncrementCounter: jest.fn(),
       onStoreCounter: jest.fn(),
       onSubstractCounter: jest.fn(),
+      getStore: jest.fn(),
     }
     wrapper = null;
   })

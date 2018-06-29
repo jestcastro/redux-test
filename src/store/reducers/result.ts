@@ -24,6 +24,13 @@ export const resultReducer = (state: IResultState = initialState, action: IResul
                     results
                 }
             }
+        case ResultActions.GetInfo:
+        if (action.results) {
+            return {
+                ...state,
+                results: action.results
+            }
+        }
         default:
             return state;
     }
