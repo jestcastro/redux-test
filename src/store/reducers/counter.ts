@@ -1,4 +1,6 @@
-import { CounterActions, ICounterAction } from "../actions/counter";
+import { ICounterAction } from "../actions/counter";
+import { CounterActions } from "../actions/counter";
+
 
 export interface ICounterState {
     counter: number;
