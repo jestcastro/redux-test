@@ -20,13 +20,13 @@ export const actions = {
             type: CounterActions.Decrement
         }
     },
-    add: (value:number | undefined): ICounterAction => {
+    add: (value?:number): ICounterAction => {
         return {
             type: CounterActions.Add,
             value
         }
     },
-    substract: (value:number | undefined): ICounterAction => {
+    substract: (value?:number): ICounterAction => {
         return {
             type: CounterActions.Substract,
             value

@@ -31,7 +31,7 @@ export const counterReducer = (state: ICounterState = initialState, action: ICou
             if (action.value) {
                 return {
                     ...state,
-                    counter: state.counter - (action.value || 5)
+                    counter: state.counter - action.value
                 }
             }
         default:

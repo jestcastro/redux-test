@@ -8,13 +8,13 @@ export interface IResultAction {
     index?: number;
 }
 export const actions = {
-    store: (value: number | undefined): IResultAction => {
+    store: (value?: number): IResultAction => {
         return {
             type: ResultActions.Store,
             value
         }
     },
-    deleteStore: (index: number | undefined): IResultAction => {
+    deleteStore: (index?: number): IResultAction => {
         return {
             type: ResultActions.DeleteStored, 
             index
